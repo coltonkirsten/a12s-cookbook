@@ -10,7 +10,7 @@ Each example is one folder: a `fleet.yaml` that declares the agents, and the sam
 | Example | What it shows | TypeScript | Python |
 |---|---|---|---|
 | [Stream a reply](examples/stream-a-reply) | Send one coding agent a task from a script and print its answer as it streams. | [index.ts](examples/stream-a-reply/index.ts) | [main.py](examples/stream-a-reply/main.py) |
-| [Scheduled agent](examples/scheduled-agent) | A clock Service wakes an agent every minute; your script watches each run. | [watch.ts](examples/scheduled-agent/watch.ts) | [watch.py](examples/scheduled-agent/watch.py) |
+| [Browser agent](examples/browser-agent) | Extend a12s: your own image with Chromium, and a seccomp profile set in `fleet.yaml`. | [index.ts](examples/browser-agent/index.ts) | [main.py](examples/browser-agent/main.py) |
 
 ## Before you start
 
