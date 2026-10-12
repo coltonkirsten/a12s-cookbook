@@ -30,7 +30,7 @@ a12s up
 node index.ts                      # or: uv run main.py
 ```
 
-The first `a12s up` in a folder stops and asks for your token: run `a12s creds set anthropic`, paste it, and run
+The first `a12s up` in a folder stops and tells you to run `a12s creds set anthropic`: paste your token, then run
 `a12s up` again. `a12s down` stops the example and keeps its disks. `a12s down --purge` removes everything.
 
 ## Contributing
