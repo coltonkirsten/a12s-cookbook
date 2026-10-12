@@ -1,0 +1,7 @@
+node_modules/
+# per machine: where your credentials come from; never commit
+a12s.bindings.yaml
+# written by `a12s up`; pins images built on your machine
+fleet.lock
+__pycache__/
+.venv/

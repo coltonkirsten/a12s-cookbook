@@ -1,0 +1,11 @@
+# One Claude Code agent with its own computer. It may reach the Anthropic API and nothing else.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: stream-a-reply }
+
+computers:
+  coder:
+    harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+    image: slim
+    credentials: [anthropic]
+    egress: { allow: [api.anthropic.com] }

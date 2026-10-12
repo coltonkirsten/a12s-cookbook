@@ -1,0 +1,9 @@
+{
+  "name": "a12s-cookbook",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": { "check": "tsc" },
+  "dependencies": { "@coltonkirsten/a12s": "^0.2.1" },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.9.0" }
+}

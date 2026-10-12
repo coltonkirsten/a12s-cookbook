@@ -1,0 +1,26 @@
+# A Claude Code agent and a clock. The clock is a Service: it has no agent, only the right to
+# put a Message in ops's inbox (grants.send). Every minute it asks ops to check its computer.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: scheduled-agent }
+
+computers:
+  ops:
+    harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+    image: slim
+    credentials: [anthropic]
+    egress: { allow: [api.anthropic.com] }
+
+services:
+  clock:
+    image: ghcr.io/coltonkirsten/a12s/svc-cron:0.2.1
+    grants: { send: [ops] }
+    config:
+      jobs:
+        - name: health-check
+          cron: "* * * * *"           # every minute; try "0 9 * * 1-5" for weekdays at 9
+          to: ops
+          replace: health-check      # if ops is busy, a newer check replaces the waiting one
+          body: >-
+            Scheduled check. Run uptime and df -h /home, then reply with one line:
+            the time, the load average and the disk use of /home.
