@@ -1,0 +1,7 @@
+#!/bin/sh
+# Headless Chromium with its own sandbox on, through the Computer's egress proxy (Chromium ignores HTTPS_PROXY).
+# browse --dump-dom https://example.com    browse --screenshot=/tmp/page.png https://example.com
+set -e
+proxy=""
+[ -n "${HTTPS_PROXY:-}" ] && proxy="--proxy-server=$HTTPS_PROXY"
+exec chromium --headless --disable-gpu --disable-dev-shm-usage $proxy "$@"

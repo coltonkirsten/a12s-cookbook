@@ -1,0 +1,9 @@
+# The a12s slim image plus Chromium. Building FROM slim keeps computerd, which a12s requires of every Computer image.
+ARG SLIM=ghcr.io/coltonkirsten/a12s/slim:0.3.0
+FROM ${SLIM}
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends chromium fonts-liberation fonts-noto-color-emoji \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY browse /usr/local/bin/browse
