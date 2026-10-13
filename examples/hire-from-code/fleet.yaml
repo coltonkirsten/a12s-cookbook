@@ -1,0 +1,13 @@
+# No agent computers here: the program creates one, puts it to work and removes it. The defaults fill in everything
+# but a name and instructions.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: hire-from-code }
+
+defaults:
+  harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+  image: slim
+  credentials: [anthropic]
+  egress: { allow: [] }
+
+agent_computers: {}
