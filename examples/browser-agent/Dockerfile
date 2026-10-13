@@ -1,5 +1,5 @@
-# The a12s slim image plus Chromium. Building FROM slim keeps computerd, which a12s requires of every Computer image.
-ARG SLIM=ghcr.io/coltonkirsten/a12s/slim:0.3.0
+# The a12s slim image plus Chromium. Building FROM slim keeps computerd, which a12s requires of every agent computer image.
+ARG SLIM=ghcr.io/coltonkirsten/a12s/slim:0.4.0
 FROM ${SLIM}
 
 RUN apt-get update \

@@ -4,10 +4,10 @@ apiVersion: a12s.ai/v1alpha1
 kind: Fleet
 metadata: { name: browser-agent }
 
-computers:
+agent_computers:
   browser:
     harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
-    image: a12s-cookbook/browser-agent:1          # docker build -t a12s-cookbook/browser-agent:1 .
+    image: a12s-cookbook/browser-agent:2          # docker build -t a12s-cookbook/browser-agent:2 .
     security: { seccomp: ./profiles/chromium.json }
     credentials: [anthropic]
     egress: { allow: [api.anthropic.com, example.com] }

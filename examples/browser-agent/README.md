@@ -8,27 +8,27 @@ profile is yours too, and only `fleet.yaml` can set it: a pulled image can never
 ## Run it
 
 ```sh
-docker build -t a12s-cookbook/browser-agent:1 .
+docker build -t a12s-cookbook/browser-agent:2 .
 a12s up                                   # once per folder before this: a12s creds set anthropic
 node index.ts                             # TypeScript (run `npm install` at the repo root first)
 uv run main.py                            # Python
 node index.ts https://example.com/       # any page on a host in egress.allow
 ```
 
-`a12s up` says `browser runs with custom seccomp profile ./profiles/chromium.json`, and `a12s status` shows it on
-the Computer's row.
+`a12s up` says `browser runs with its own seccomp profile`, and `a12s status` shows the profile's digest on the
+agent computer's row.
 
 ## How it works
 
-- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.3.0` plus Debian's Chromium. Keeping `slim`
+- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.4.0` plus Debian's Chromium. Keeping `slim`
   as the base keeps computerd, which a12s checks for before it runs any image.
-- [`browse`](browse): runs headless Chromium through the Computer's egress proxy, with Chromium's own sandbox on.
+- [`browse`](browse): runs headless Chromium through the agent computer's egress proxy, with Chromium's own sandbox on.
   The agent calls it from its shell: `browse --dump-dom <url>` or `browse --screenshot=/tmp/page.png <url>`.
 - [`profiles/chromium.json`](profiles/chromium.json): Docker's default seccomp profile plus the user-namespace
   calls Chromium's sandbox needs. Without it Chromium stops with `No usable sandbox!`.
-- [`fleet.yaml`](fleet.yaml): `security: { seccomp: ./profiles/chromium.json }` on the `browser` Computer.
-  `a12s up` checks the file, pins its digest in `fleet.lock`, and restarts the Computer at its next idle moment
-  whenever the profile changes. Capabilities and `no-new-privileges` stay as they are.
+- [`fleet.yaml`](fleet.yaml): `security: { seccomp: ./profiles/chromium.json }` on the `browser` agent computer.
+  `a12s up` checks the file, sends the profile with the Fleet, and restarts the agent computer at its next idle
+  moment whenever the profile changes. Capabilities and `no-new-privileges` stay as they are.
 - `egress.allow` lists the sites the browser may open. Every other host is refused.
 
 ## Next

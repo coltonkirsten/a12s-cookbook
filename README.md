@@ -9,6 +9,7 @@ Each example is one folder: a `fleet.yaml` that declares the agents, and the sam
 
 | Example | What it shows | TypeScript | Python |
 |---|---|---|---|
+| [Hire from code](examples/hire-from-code) | Create an agent computer from your program, prompt it and remove it. | [index.ts](examples/hire-from-code/index.ts) | [main.py](examples/hire-from-code/main.py) |
 | [Stream a reply](examples/stream-a-reply) | Send one coding agent a task from a script and print its answer as it streams. | [index.ts](examples/stream-a-reply/index.ts) | [main.py](examples/stream-a-reply/main.py) |
 | [Browser agent](examples/browser-agent) | Extend a12s: your own image with Chromium, and a seccomp profile set in `fleet.yaml`. | [index.ts](examples/browser-agent/index.ts) | [main.py](examples/browser-agent/main.py) |
 
