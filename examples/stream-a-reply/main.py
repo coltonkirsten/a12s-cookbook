@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.5.0"]
+# dependencies = ["a12s>=0.6.0"]
 # ///
 """Send one coding agent a task and print its answer as it streams."""
 import sys

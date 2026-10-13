@@ -19,5 +19,5 @@ uv run main.py "Explain TCP in two sentences."   # Python
 - `hello.send(task).wait()` sends the task and returns the Turn that answered it; `hello.remove()` stops and removes it (its disk
   stays until `a12s drive rm home-hello`).
 
-A later `a12s up` in this folder sees `hello` if it still exists and asks before removing it, because the file
-doesn't have it.
+A later `a12s up` in this folder removes `hello` if it still exists, because the file doesn't have it (`a12s export`
+first keeps it).
