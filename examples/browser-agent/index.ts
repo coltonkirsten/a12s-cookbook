@@ -6,7 +6,7 @@ const task = `Run \`browse --dump-dom ${url}\` in your shell. Reply with the pag
 
 const fleet = await Fleet.connect(); // finds the Fleet started from this folder
 const browser = await fleet.agentComputers.get("browser");
-const turn = await browser.prompt(task, {
+const turn = await browser.send(task).wait({
   onEvent: (ev) => {
     if (ev.type === "text.delta") process.stdout.write(ev.data.text);
     if (ev.type === "tool.started") process.stdout.write(`\n[tool] ${ev.data.name}\n`);

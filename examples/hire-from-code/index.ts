@@ -6,7 +6,7 @@ const task = process.argv[2] ?? "Name three prime numbers.";
 const fleet = await Fleet.connect(); // finds the Fleet started from this folder
 const hello = await fleet.agentComputers.create("hello", { instructions: "Be helpful. Answer in one short paragraph." });
 try {
-  const turn = await hello.prompt(task);
+  const turn = await hello.send(task).wait();
   console.log(turn.status === "completed" ? turn.text : `turn ${turn.status}: ${turn.error}`);
 } finally {
   await hello.remove();

@@ -29,11 +29,11 @@ turn completed
 - [`fleet.yaml`](fleet.yaml) declares one agent computer. `a12s up` starts it.
 - `Fleet()` (`Fleet.connect()` in TypeScript) finds the running Fleet from the current folder, and
   `fleet.agent_computers.get("coder")` hands you the agent computer.
-- `coder.prompt(task)` puts a Message in coder's inbox, waits for the Turn that delivers it, and returns the
+- `coder.send(task)` puts a Message in coder's inbox; `.wait()` waits for the Turn that delivers it and returns the
   finished Turn. `onEvent` / `on_event` gets every event on the way: `text.delta` is the agent's text,
   `tool.started` is a tool call.
 
-Run it twice: the second task continues the same conversation. `a12s prompt coder --new "…"` starts a fresh one.
+Run it twice: the second task continues the same conversation. `a12s send coder "…" --fresh --wait` starts a fresh one.
 
 ## Next
 

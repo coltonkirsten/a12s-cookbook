@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.4.0"]
+# dependencies = ["a12s>=0.5.0"]
 # ///
 """Send one coding agent a task and print its answer as it streams."""
 import sys
@@ -21,5 +21,5 @@ def show(ev):
 
 fleet = a12s.Fleet()  # finds the Fleet started from this folder
 coder = fleet.agent_computers.get("coder")
-turn = coder.prompt(task, on_event=show)
+turn = coder.send(task).wait(on_event=show)
 print(f"\n\nturn {turn.status}")

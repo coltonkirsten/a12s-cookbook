@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.4.0"]
+# dependencies = ["a12s>=0.5.0"]
 # ///
 """Ask an agent with a browser to read a web page, and print its answer as it streams."""
 import sys
@@ -20,5 +20,5 @@ def show(ev):
 
 fleet = a12s.Fleet()  # finds the Fleet started from this folder
 browser = fleet.agent_computers.get("browser")
-turn = browser.prompt(task, on_event=show)
+turn = browser.send(task).wait(on_event=show)
 print(f"\n\nturn {turn.status}")
