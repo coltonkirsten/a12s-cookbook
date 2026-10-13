@@ -1,0 +1,7 @@
+{
+  "a12s": 1,
+  "name": "clock",
+  "version": "1.0.0",
+  "user": 1000,
+  "health": { "http": { "port": 8080, "path": "/healthz" } }
+}
