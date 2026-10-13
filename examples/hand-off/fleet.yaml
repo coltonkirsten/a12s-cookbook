@@ -1,0 +1,28 @@
+# Two agents that hand work to each other. lead never does the work: it sends it to worker1 and ends its Turn.
+# worker1 sends the result back. Each may send only to the other (grants.send).
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: hand-off }
+
+defaults:
+  harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+  image: slim
+  credentials: [anthropic]
+  egress: { allow: [api.anthropic.com] }
+
+agent_computers:
+  lead:
+    grants: { send: [worker1] }
+    instructions: |
+      # You are lead
+      You coordinate `worker1` with your `send` tool (mcp__a12s__send). You never do the work yourself.
+      When a task arrives (a message not via computer:worker1):
+      1. `send` the work to worker1, asking for a short answer sent back to `lead`.
+      2. Reply `DISPATCHED` and end your turn. Don't wait: the result arrives as a new message.
+      When worker1's result arrives (via="computer:worker1"): reply `FINAL ANSWER:` followed by the answer.
+  worker1:
+    grants: { send: [lead] }
+    instructions: |
+      # You are worker1
+      `lead` sends you work (via="computer:lead"). Do it, then `send` the result to `lead` starting with
+      `RESULT:`. Then reply `SENT`.

@@ -1,0 +1,11 @@
+# One Claude Code agent. The page in this folder talks to it through `a12s gateway`.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: gateway-page }
+
+agent_computers:
+  worker:
+    harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+    image: slim
+    credentials: [anthropic]
+    egress: { allow: [api.anthropic.com] }

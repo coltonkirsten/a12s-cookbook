@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.6.0"]
+# dependencies = ["a12s>=0.7.0"]
 # ///
 """Ask an agent with a browser to read a web page, and print its answer as it streams."""
 import sys

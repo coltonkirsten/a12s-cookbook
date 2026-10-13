@@ -3,7 +3,8 @@
 Small, complete examples for [a12s](https://github.com/coltonkirsten/a12s): AI coding agents (Claude Code, Codex)
 running as isolated computers on Docker, driven from your own code.
 
-Each example is one folder: a `fleet.yaml` that declares the agents, and the same program in TypeScript and Python.
+Each example is one folder: a `fleet.yaml` that declares the agents, and the same program in TypeScript and Python
+(browser-only examples have just the page).
 
 ## Examples
 
@@ -12,6 +13,9 @@ Each example is one folder: a `fleet.yaml` that declares the agents, and the sam
 | [Hire from code](examples/hire-from-code) | Create an agent computer from your program, send it a task and remove it. | [index.ts](examples/hire-from-code/index.ts) | [main.py](examples/hire-from-code/main.py) |
 | [Stream a reply](examples/stream-a-reply) | Send one coding agent a task from a script and print its answer as it streams. | [index.ts](examples/stream-a-reply/index.ts) | [main.py](examples/stream-a-reply/main.py) |
 | [Browser agent](examples/browser-agent) | Extend a12s: your own image with Chromium, and a seccomp profile set in `fleet.yaml`. | [index.ts](examples/browser-agent/index.ts) | [main.py](examples/browser-agent/main.py) |
+| [Hand off](examples/hand-off) | Hand work from one agent to another: a lead dispatches to a worker and gets the result back. | [index.ts](examples/hand-off/index.ts) | [main.py](examples/hand-off/main.py) |
+| [Go service](examples/go-service) | A Service written in Go with svckit: a clock that wakes a sleeping agent with a tick. | [index.ts](examples/go-service/index.ts) | [main.py](examples/go-service/main.py) |
+| [Gateway page](examples/gateway-page) | A browser page with a send box and live events, served by `a12s gateway -- npx vite`. | [main.js](examples/gateway-page/main.js) (browser) | - |
 
 ## Before you start
 
@@ -37,6 +41,6 @@ token, and the agent starts. `a12s down` stops the example and keeps its disks. 
 ## Contributing
 
 New examples are welcome. Keep one folder per example with a README, a `fleet.yaml`, and both a TypeScript and a
-Python version that run against the latest a12s release.
+Python version that run against the latest a12s release (a browser-only example has its page instead).
 
 MIT licensed.

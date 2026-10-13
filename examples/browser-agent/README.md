@@ -20,7 +20,7 @@ agent computer's row.
 
 ## How it works
 
-- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.5.0` plus Debian's Chromium. Keeping `slim`
+- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.7.0` plus Debian's Chromium. Keeping `slim`
   as the base keeps computerd, which a12s checks for before it runs any image.
 - [`browse`](browse): runs headless Chromium through the agent computer's egress proxy, with Chromium's own sandbox on.
   The agent calls it from its shell: `browse --dump-dom <url>` or `browse --screenshot=/tmp/page.png <url>`.

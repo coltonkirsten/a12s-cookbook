@@ -1,0 +1,21 @@
+# A Service (clock, written in Go) that sends worker a tick every two minutes. worker sleeps when idle, and a Message
+# from the clock wakes it.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: go-service }
+
+services:
+  clock:
+    image: a12s-cookbook/clock:1                  # docker build -t a12s-cookbook/clock:1 clock
+    grants: { send: [worker] }                    # may put Messages in worker's inbox, nothing else
+    config: { to: worker, every: 2m }             # the clock reads it from /run/a12s/config/config.json
+
+agent_computers:
+  worker:
+    harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+    image: slim
+    credentials: [anthropic]
+    egress: { allow: [api.anthropic.com] }
+    power: { sleepAfterIdle: 30s, wakeOnMessage: { from: [service:clock], maxWakesPerHour: 30 } }
+    instructions: |
+      When a tick arrives, run `date` in your shell and say hello with the time, in one line.

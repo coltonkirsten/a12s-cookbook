@@ -13,7 +13,8 @@ uv run main.py "Explain TCP in two sentences."   # Python
 
 ## How it works
 
-- [`fleet.yaml`](fleet.yaml) sets `defaults` (harness, image, credential, egress) and no agent computers.
+- [`fleet.yaml`](fleet.yaml) sets `defaults` (harness, image, credential, egress) and no agent computers. An agent
+  computer's own `credentials` add to the defaults: `credentials: [github]` keeps `anthropic` too.
 - `fleet.agent_computers.create("hello", instructions=...)` (TypeScript: `fleet.agentComputers.create`) creates it
   and returns once it is up. The instructions become its `CLAUDE.md`.
 - `hello.send(task).wait()` sends the task and returns the Turn that answered it; `hello.remove()` stops and removes it (its disk

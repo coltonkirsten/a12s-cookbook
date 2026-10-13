@@ -1,0 +1,7 @@
+{
+  "name": "a12s-cookbook-gateway-page",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite" },
+  "dependencies": { "@coltonkirsten/a12s": "^0.7.0", "vite": "^8.0.0" }
+}
