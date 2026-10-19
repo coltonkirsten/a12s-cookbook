@@ -3,5 +3,5 @@
   "private": true,
   "type": "module",
   "scripts": { "dev": "vite" },
-  "dependencies": { "@coltonkirsten/a12s": "^0.7.0", "vite": "^8.0.0" }
+  "dependencies": { "@coltonkirsten/a12s": "^0.8.1", "vite": "^8.0.0" }
 }

@@ -1,0 +1,15 @@
+# One Claude Code agent that works on a folder of this machine in place: ./project is mounted at /home/agent/project.
+apiVersion: a12s.ai/v1alpha1
+kind: Fleet
+metadata: { name: attach-a-folder }
+
+agent_computers:
+  fixer:
+    harness: { kind: claude-code, version: 2.1.280, model: claude-haiku-4-5 }
+    image: slim
+    credentials: [anthropic]
+    egress: { allow: [api.anthropic.com] }
+    attach:
+      project: { host: ./project }                # relative to this file; what the agent writes lands here at once
+    instructions: |
+      Your project is in ~/project. Work there, change as little as you need, and say in one line what you changed.

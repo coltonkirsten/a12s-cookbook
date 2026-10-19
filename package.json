@@ -4,6 +4,6 @@
   "type": "module",
   "engines": { "node": ">=24" },
   "scripts": { "check": "tsc" },
-  "dependencies": { "@coltonkirsten/a12s": "^0.7.0" },
+  "dependencies": { "@coltonkirsten/a12s": "^0.8.1" },
   "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.9.0" }
 }
