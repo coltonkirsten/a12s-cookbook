@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.7.0"]
+# dependencies = ["a12s>=0.8.1"]
 # ///
 """Give lead a task, watch lead and worker1 pass it back and forth, and print lead's final answer."""
 import sys

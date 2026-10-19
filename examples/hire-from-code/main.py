@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.7.0"]
+# dependencies = ["a12s>=0.8.1"]
 # ///
 """Create an agent computer from code, give it a task, print the answer and remove it."""
 import sys

@@ -6,7 +6,7 @@ metadata: { name: go-service }
 
 services:
   clock:
-    image: a12s-cookbook/clock:1                  # docker build -t a12s-cookbook/clock:1 clock
+    image: a12s-cookbook/clock:2                  # docker build -t a12s-cookbook/clock:2 clock
     grants: { send: [worker] }                    # may put Messages in worker's inbox, nothing else
     config: { to: worker, every: 2m }             # the clock reads it from /run/a12s/config/config.json
 

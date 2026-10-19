@@ -15,28 +15,28 @@ Each example is one folder: a `fleet.yaml` that declares the agents, and the sam
 | [Browser agent](examples/browser-agent) | Extend a12s: your own image with Chromium, and a seccomp profile set in `fleet.yaml`. | [index.ts](examples/browser-agent/index.ts) | [main.py](examples/browser-agent/main.py) |
 | [Hand off](examples/hand-off) | Hand work from one agent to another: a lead dispatches to a worker and gets the result back. | [index.ts](examples/hand-off/index.ts) | [main.py](examples/hand-off/main.py) |
 | [Go service](examples/go-service) | A Service written in Go with svckit: a clock that wakes a sleeping agent with a tick. | [index.ts](examples/go-service/index.ts) | [main.py](examples/go-service/main.py) |
+| [Attach a folder](examples/attach-a-folder) | An agent works on a folder of this machine in place: it fixes a bug and the fix lands in your folder. | [index.ts](examples/attach-a-folder/index.ts) | [main.py](examples/attach-a-folder/main.py) |
 | [Gateway page](examples/gateway-page) | A browser page with a send box and live events, served by `a12s gateway -- npx vite`. | [main.js](examples/gateway-page/main.js) (browser) | - |
 
-## Before you start
+## Start here
 
-You need Docker running, [a12s](https://github.com/coltonkirsten/a12s#install), Node 24+ or
-[uv](https://docs.astral.sh/uv/), and a Claude token from `claude setup-token`.
+You need Docker running, Node 24+ (TypeScript) or [uv](https://docs.astral.sh/uv/) (Python), and a Claude token:
+run `claude setup-token` and copy the `sk-ant-oat…` it prints.
 
 ```sh
+brew install coltonkirsten/tap/a12s       # the a12s CLI, v0.8.1 (or a binary from the a12s Releases page)
 git clone https://github.com/coltonkirsten/a12s-cookbook && cd a12s-cookbook
-npm install                        # TypeScript only; Python examples install their own dependency
-```
-
-## Run any example in 3 commands
-
-```sh
+npm install                               # TypeScript only; Python examples install their own dependency
 cd examples/stream-a-reply
-a12s up
-node index.ts                      # or: uv run main.py
+a12s creds set anthropic                  # paste the token
+a12s up                                   # starts the agent computer on Docker
+node index.ts                             # or: uv run main.py
 ```
 
-The first `a12s up` in a folder warns that `anthropic` has no value yet: run `a12s creds set anthropic`, paste your
-token, and the agent starts. `a12s down` stops the example and keeps its disks. `a12s down --purge` removes everything.
+Every example folder is its own Fleet with its own token: run `a12s creds set anthropic` in a folder before its first
+`a12s up`, and again after `a12s down`, which stops the example, keeps its disks and forgets the token.
+`a12s down --purge` removes the disks too.
+The examples use Claude Haiku; change `model` in a `fleet.yaml` to use another.
 
 ## Contributing
 

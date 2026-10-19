@@ -8,7 +8,8 @@ Its network is closed except for the Anthropic API.
 ## Run it
 
 ```sh
-a12s up                                   # once per folder before this: a12s creds set anthropic
+a12s creds set anthropic                  # paste the token from `claude setup-token`
+a12s up
 node index.ts                             # TypeScript (run `npm install` at the repo root first)
 uv run main.py                            # Python
 node index.ts "Write fizzbuzz in Go and run it."   # your own task
@@ -37,6 +38,7 @@ Run it twice: the second task continues the same conversation. `a12s send coder 
 
 ## Next
 
-- Use Codex: `harness: { kind: codex, version: 0.154.0 }` and `credentials: [openai]`.
+- Use Codex: `harness: { kind: codex, version: 0.154.0 }` and `credentials: [openai]`. Set `openai` in the
+  `auth.json` form (`{"auth_mode":"apikey","OPENAI_API_KEY":"sk-…"}`): Codex ignores a bare API key.
 - Let it reach the web: add hosts to `egress.allow`, e.g. `[api.anthropic.com, github.com, pypi.org]`.
 - [SDK reference](https://github.com/coltonkirsten/a12s/blob/main/docs/sdk.md)

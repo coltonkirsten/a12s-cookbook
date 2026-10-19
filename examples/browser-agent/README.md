@@ -8,8 +8,9 @@ profile is yours too, and only `fleet.yaml` can set it: a pulled image can never
 ## Run it
 
 ```sh
-docker build -t a12s-cookbook/browser-agent:2 .
-a12s up                                   # once per folder before this: a12s creds set anthropic
+docker build -t a12s-cookbook/browser-agent:3 .
+a12s creds set anthropic                  # paste the token from `claude setup-token`
+a12s up
 node index.ts                             # TypeScript (run `npm install` at the repo root first)
 uv run main.py                            # Python
 node index.ts https://example.com/       # any page on a host in egress.allow
@@ -20,7 +21,7 @@ agent computer's row.
 
 ## How it works
 
-- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.7.0` plus Debian's Chromium. Keeping `slim`
+- [`Dockerfile`](Dockerfile): `FROM ghcr.io/coltonkirsten/a12s/slim:0.8.1` plus Debian's Chromium. Keeping `slim`
   as the base keeps computerd, which a12s checks for before it runs any image.
 - [`browse`](browse): runs headless Chromium through the agent computer's egress proxy, with Chromium's own sandbox on.
   The agent calls it from its shell: `browse --dump-dom <url>` or `browse --screenshot=/tmp/page.png <url>`.

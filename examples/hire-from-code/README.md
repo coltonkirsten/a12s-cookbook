@@ -6,7 +6,8 @@ computers, only `defaults`: a new one needs nothing but a name and its instructi
 ## Run it
 
 ```sh
-a12s up                                   # once per folder before this: a12s creds set anthropic
+a12s creds set anthropic                  # paste the token from `claude setup-token`
+a12s up
 node index.ts                             # TypeScript (run `npm install` at the repo root first)
 uv run main.py "Explain TCP in two sentences."   # Python
 ```

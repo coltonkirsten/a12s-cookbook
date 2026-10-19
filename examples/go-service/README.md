@@ -12,8 +12,9 @@ You need Go 1.26+ and Docker.
 
 ```sh
 (cd clock && go mod tidy)                 # writes go.sum
-docker build -t a12s-cookbook/clock:1 clock
-a12s up                                   # once per folder before this: a12s creds set anthropic
+docker build -t a12s-cookbook/clock:2 clock
+a12s creds set anthropic                  # paste the token from `claude setup-token`
+a12s up
 node index.ts                             # TypeScript (run `npm install` at the repo root first)
 uv run main.py                            # Python
 ```
@@ -58,7 +59,7 @@ To start your own Service from scratch:
 
 ```sh
 mkdir clock && cd clock && go mod init example.com/clock
-go get github.com/coltonkirsten/a12s/services/svckit@v0.7.0
+go get github.com/coltonkirsten/a12s/services/svckit@v0.8.1
 # write main.go, then:
 go mod tidy
 ```

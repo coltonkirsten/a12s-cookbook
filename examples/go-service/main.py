@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["a12s>=0.7.0"]
+# dependencies = ["a12s>=0.8.1"]
 # ///
 """Print each Turn of worker as it ends: the clock Service wakes it with a tick every two minutes."""
 import a12s
